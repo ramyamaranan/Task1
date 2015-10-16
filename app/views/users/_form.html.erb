@@ -1,0 +1,47 @@
+<%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      
+      <%= content_tag :div do %>
+      <%= f.label :education %>
+      <%= f.select :education, ["Schooling", "Bachelor" ,"Master"],:prompt=>"select", class: 'form-control'%>
+      <% end %>
+     
+      <%= content_tag :div, :id=>'schooling',:style=>'display:none' do %>
+      <%= f.label :schooling %>
+      <%= f.select :schooling, ['10th' ,'12th'],:prompt=>"select",class: 'form-control'  %>
+      <% end %>
+
+      <%= content_tag :div, :id=>'bachelor', :style=>'display:none' do -%>
+      <%= f.label "Bachelor" %>
+      <%= f.select :bachelor, ['B.E','BCA','BBA'],:prompt=>"select",class: 'form-control'  %>
+      <% end %>
+
+      <%= content_tag :div,  :id=>'master', :style=>'display:none' do %>
+      <%= f.label "Master" %>
+      <%= f.select :master, ['M.E','MCA','MBA'],:prompt=>"select" ,class: 'form-control' %>
+      <% end %>  
+      
+      <%= content_tag :div do %>
+      <%= content_tag :ul, :id=>"sortable1", class:"connectedSortable" do %>            
+            <li class="ui-state-default"><input type="hidden" name="user[list][0]" value="Line 1">Line 1</input></li>
+            <li class="ui-state-default"><input type="hidden" name="user[list][1]" value="Line 2">Line 2</input></li>
+           <li class="ui-state-default"><input type="hidden" name="user[list][2]" value="Line 3">Line 3</input></li>
+            <li class="ui-state-default"><input type="hidden" name="user[list][3]" value="Line 4">Line 4</input></li>
+      <% end %>
+      <% end %> 
+       
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+<% end %>
+
+ 
