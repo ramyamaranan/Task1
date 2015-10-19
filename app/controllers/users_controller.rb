@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+   @user = User.find(params[:id])
    @microposts = @user.microposts.paginate(page: params[:page])
   end  
   	
@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new(user_params)
-    
     array = []    
     params["user"]["list"].each { |re| array.push(re[1]) }
     @user.list = array
@@ -36,11 +35,11 @@ end
 
 def update
     @user = User.find(params[:id])
-    array1 = @user.list 
-    params["user"]["list"].each { |re| array1.push(re[1]) }
-    @user.list = array1
-    if @user.update_attributes(user_params)
-           flash[:success] = "Profile updated"
+    arr = []
+    params["user"]["list"].each { |re| arr.push(re[1]) }
+    @user.update(list: arr)  
+     if @user.update_attributes(user_params)
+        flash[:success] = "Profile updated"
       redirect_to @user
 
     else

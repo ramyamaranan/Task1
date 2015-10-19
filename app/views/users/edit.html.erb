@@ -40,15 +40,13 @@
       <% end %>  
       
     <br>
-
-    <%= content_tag :div do %>
-      <%= content_tag :ul, :id=>"sortable1", class: "connectedSortable" do %>
-        <li class="ui-state-default"><input type="hidden" name="user[list][0]" value="Line 1">Line 1</input></li>
-        <li class="ui-state-default"><input type="hidden" name="user[list][1]" value="Line 2">Line 2</input></li>
-        <li class="ui-state-default"><input type="hidden" name="user[list][2]" value="Line 3">Line 3</input></li>
-        <li class="ui-state-default"><input type="hidden" name="user[list][3]" value="Line 4">Line 4</input></li>
+     <%= content_tag :ul, :id=>"sortable1", class:"connectedSortable" do %>
+      <% @user.list.each_with_index do |a,index|%>
+      <li><input type="hidden" name="user[list][<%= index %>]" value="<%= a %>"><%= a %></input></li>
       <% end %>
-    <% end %> 
+      <% end %>
+
+      
 
       <%= f.submit "Save changes", class: "btn btn-primary" %>
       <% end %>
