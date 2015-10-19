@@ -24,17 +24,18 @@
       <%= f.select :education, ["Schooling", "Bachelor" ,"Master"],:prompt=>"select", class: 'form-control'%>
       <% end %>
      
-      <%= content_tag :div, :id=>'schooling',:style=>'display:none' do %>
+      <%= content_tag :div, :id=>'schooling',:style=> display_services(@user,"schooling") do %>
+
       <%= f.label :schooling %>
       <%= f.select :schooling, ['10th' ,'12th'],:prompt=>"select",class: 'form-control'  %>
       <% end %>
 
-      <%= content_tag :div, :id=>'bachelor', :style=>'display:none' do -%>
+      <%= content_tag :div, :id=>'bachelor', :style=>display_services(@user,"bachelor") do -%>
       <%= f.label "Bachelor" %>
       <%= f.select :bachelor, ['B.E','BCA','BBA'],:prompt=>"select",class: 'form-control'  %>
       <% end %>
 
-      <%= content_tag :div,  :id=>'master', :style=>'display:none' do %>
+      <%= content_tag :div,  :id=>'master', :style=>display_services(@user,"master") do %>
       <%= f.label "Master" %>
       <%= f.select :master, ['M.E','MCA','MBA'],:prompt=>"select" ,class: 'form-control' %>
       <% end %>  

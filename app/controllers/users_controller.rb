@@ -38,10 +38,9 @@ def update
     arr = []
     params["user"]["list"].each { |re| arr.push(re[1]) }
     @user.update(list: arr)  
-     if @user.update_attributes(user_params)
-        flash[:success] = "Profile updated"
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
       redirect_to @user
-
     else
       render 'edit'
     end
